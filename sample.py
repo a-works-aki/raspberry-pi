@@ -71,15 +71,20 @@ def init_lcd():
     command(display_On_Cursor_Off)
 
 
+def display_lcd():
+    writeLCD(time.strftime("%y/%m/%d"))
+    command(LCD_2ndline)
+    writeLCD(time.strftime("%H:%M:%S"))
+
+
 def main():
     init_lcd()
 
     while True:
-        writeLCD(time.strftime("%y/%m/%d"))
-        command(LCD_2ndline)
-        writeLCD(time.strftime("%H:%M:%S"))
-        # time.sleep(0.1)
-        set_button.when_held = pressed_set_button
+        if set_button.when_held:
+            pressed_set_button()
+        else:
+            display_lcd()
 
 
 try:
