@@ -10,6 +10,7 @@ from displayTime import displayTime
 from lcdInit import lcdInit
 from command import command
 from test import test
+from test import set_button
 
 
 # I2C通信の設定　
@@ -21,7 +22,6 @@ display_On_Cursor_On = 0x0f
 LCD_2ndline = 0x40+0x80
 
 # ボタン設定
-set_button = Button(1, hold_time=2)
 p_button = Button(8)
 m_button = Button(7)
 
