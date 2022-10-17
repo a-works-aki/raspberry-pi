@@ -41,6 +41,7 @@ def main():
         else:
             test()
             setmode = 0
+            lcdInit()
 
 
 try:
