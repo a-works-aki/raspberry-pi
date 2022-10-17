@@ -34,6 +34,7 @@ def set_mode_change():
 
 
 def main():
+    global setmode
     lcdInit()
 
     while True:
