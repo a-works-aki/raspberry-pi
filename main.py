@@ -3,7 +3,7 @@
 import smbus
 import time
 import datetime
-from gpiozero import LED, Button
+from gpiozero import Button
 from signal import pause
 import displayTime
 
