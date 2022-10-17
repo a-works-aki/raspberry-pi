@@ -1,22 +1,5 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
-import smbus
-import time
-import datetime
-from gpiozero import LED, Button
-from signal import pause
-import displayTime
-
-# I2C通信の設定　
-i2c = smbus.SMBus(1)  # 1 is bus number
-i2c_addr = 0x3e  # lcd
-resister_aqm0802 = 0x00
-data = 0x40
-clear = 0x01
-home = 0x02
-display_On_Cursor_Off = 0x0C
-display_On_Cursor_On = 0x0f
-LCD_2ndline = 0x40+0x80
 
 
 def command(code):
