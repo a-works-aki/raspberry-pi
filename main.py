@@ -43,6 +43,7 @@ def main():
             displayTime()
         else:
             print("set-mode")
+            setmode = 0
 
 
 try:
