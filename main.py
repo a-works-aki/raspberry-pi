@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
+from xml.dom import pulldom
 import smbus
 import time
 import datetime
@@ -23,7 +24,7 @@ display_On_Cursor_On = 0x0f
 LCD_2ndline = 0x40+0x80
 
 # ボタン設定
-set_button = Button(1, hold_time=2)
+set_button = Button(1, pull_up=False  hold_time=2)
 p_button = Button(8)
 m_button = Button(7)
 
