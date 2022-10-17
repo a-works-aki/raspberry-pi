@@ -6,6 +6,7 @@ import datetime
 from gpiozero import Button
 from signal import pause
 import displayTime
+import lcdInit
 
 # I2C通信の設定　
 i2c = smbus.SMBus(1)  # 1 is bus number
@@ -33,12 +34,12 @@ def set_mode_change():
 
 
 def main():
-    displayTime.init_lcd()
+    lcdInit()
 
     while True:
         set_button.when_held = set_mode_change
         if setmode == 0:
-            displayTime.display_time()
+            displayTime()
         else:
             print("set mode")
 
