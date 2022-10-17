@@ -45,6 +45,7 @@ def setting_flag():
 def test():
     global now, year, month, day, hour, minute, second, set_flag
     print(now)
+    setLcdInit()
 
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
     writeLcd(now.strftime(
@@ -195,10 +196,4 @@ def test():
     print(set_time)
     subprocess.call(shlex.split(set_time))
     subprocess.call(shlex.split("sudo hwclock -s"))
-
-
-try:
-    setLcdInit()
-    test()
-finally:
     print("final")
