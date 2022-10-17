@@ -7,7 +7,7 @@ clear = 0x01
 display_On_Cursor_Off = 0x0C
 
 
-def init_lcd():
+def lcdInit():
     command(0x38)
     command(0x39)
     command(0x14)

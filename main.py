@@ -7,6 +7,7 @@ from gpiozero import Button
 from signal import pause
 import displayTime
 import lcdInit
+import command
 
 # I2C通信の設定　
 i2c = smbus.SMBus(1)  # 1 is bus number
@@ -48,4 +49,4 @@ try:
     print("start;"+str(datetime.datetime.now()))
     main()
 finally:
-    displayTime.command(clear)
+    command(clear)
