@@ -3,21 +3,14 @@
 import smbus
 import time
 import datetime
-from gpiozero import Button
 import subprocess
 import shlex
+from gpiozero import Button
 from command import command
 from writeLcd import writeLcd
+from setLcdInit import setLcdInit
 
-# I2C通信の設定　
-i2c = smbus.SMBus(1)  # 1 is bus number
-i2c_addr = 0x3e  # lcd
-resister_aqm0802 = 0x00
-data = 0x40
-clear = 0x01
-home = 0x02
-display_On_Cursor_Off = 0x0C
-display_On_Cursor_On = 0x0f
+# lcdカーソルアドレス
 lcd_year = 0x81
 lcd_month = 0x84
 lcd_day = 0x87
@@ -42,18 +35,6 @@ hour = now.hour
 minute = now.minute
 second = now.second
 set_flag = 0
-
-
-def init():
-    command(0x38)
-    command(0x39)
-    command(0x14)
-    command(0x73)
-    command(0x56)
-    command(0x6c)
-    command(0x38)
-    command(clear)
-    command(display_On_Cursor_On)
 
 
 def setting_flag():
@@ -217,7 +198,7 @@ def test():
 
 
 try:
-    init()
+    setLcdInit()
     test()
 finally:
     print("final")

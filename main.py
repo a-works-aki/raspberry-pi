@@ -8,6 +8,7 @@ from signal import pause
 from displayTime import displayTime
 from lcdInit import lcdInit
 from command import command
+from test import test
 
 
 # I2C通信の設定　
@@ -36,6 +37,7 @@ def set_mode_change():
 
 
 def main():
+    global setmode
     lcdInit()
 
     while True:
@@ -43,7 +45,8 @@ def main():
         if setmode == 0:
             displayTime()
         else:
-            print("set mode")
+            test()
+            setmode = 0
 
 
 try:
