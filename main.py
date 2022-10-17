@@ -9,13 +9,9 @@ from signal import pause
 from displayTime import displayTime
 from lcdInit import lcdInit
 from command import command
-from test import test
 
 
 # I2C通信の設定　
-i2c = smbus.SMBus(1)  # 1 is bus number
-i2c_addr = 0x3e  # lcd
-resister_aqm0802 = 0x00
 data = 0x40
 clear = 0x01
 home = 0x02
@@ -38,7 +34,6 @@ def set_mode_change():
 
 
 def main():
-    global setmode
     lcdInit()
 
     while True:
@@ -47,7 +42,6 @@ def main():
             displayTime()
         else:
             print("set-mode")
-            setmode = 0
 
 
 try:
