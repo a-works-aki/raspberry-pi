@@ -5,6 +5,7 @@ import time
 import datetime
 from gpiozero import LED, Button
 from signal import pause
+import displayTime
 
 # I2C通信の設定　
 i2c = smbus.SMBus(1)  # 1 is bus number
@@ -16,34 +17,6 @@ home = 0x02
 display_On_Cursor_Off = 0x0C
 display_On_Cursor_On = 0x0f
 LCD_2ndline = 0x40+0x80
-
-# ボタン設定
-set_button = Button(1, hold_time=2)
-p_button = Button(8)
-m_button = Button(7)
-
-
-def pressed_set_button():
-    print("Setting mode")
-    """
-    while True:
-        if set_button.is_pressed:
-            print("Pressed setting_button")
-        elif p_button.is_pressed:
-            print("Pressed p_button")
-        elif m_button.is_pressed:
-            print("Pressed m_button")
-    """
-    command(0x38)
-    command(0x39)
-    command(0x14)
-    command(0x73)
-    command(0x56)
-    command(0x6c)
-    command(0x38)
-    command(clear)
-    command(display_On_Cursor_On)
-    pause()
 
 
 def command(code):
@@ -77,18 +50,7 @@ def display_lcd():
     writeLCD(time.strftime("%H:%M:%S"))
 
 
-def main():
-    init_lcd()
-
-    while True:
-        if set_button.when_held:
-            pressed_set_button()
-        else:
-            display_lcd()
-
-
-try:
-    print("start;"+str(datetime.datetime.now()))
-    main()
-finally:
-    command(clear)
+def display_time():
+    writeLCD(time.strftime("%y/%m/%d"))
+    command(LCD_2ndline)
+    writeLCD(time.strftime("%H:%M:%S"))
