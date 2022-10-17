@@ -5,9 +5,10 @@ import time
 import datetime
 from gpiozero import Button
 from signal import pause
-import displayTime
-import lcdInit
-import command
+from displayTime import displayTime
+from lcdInit import lcdInit
+from command import command
+
 
 # I2C通信の設定　
 i2c = smbus.SMBus(1)  # 1 is bus number

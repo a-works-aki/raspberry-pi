@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
-import command
+from command import command
 
 # I2C通信の設定　
 clear = 0x01

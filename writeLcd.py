@@ -9,7 +9,7 @@ resister_aqm0802 = 0x00
 data = 0x40
 
 
-def writeLCD(message):
+def writeLcd(message):
     mojilist = []
     for moji in message:
         mojilist.append(ord(moji))
