@@ -6,6 +6,8 @@ import datetime
 from gpiozero import Button
 import subprocess
 import shlex
+from command import command
+from writeLcd import writeLcd
 
 # I2C通信の設定　
 i2c = smbus.SMBus(1)  # 1 is bus number
@@ -54,19 +56,6 @@ def init():
     command(display_On_Cursor_On)
 
 
-def command(code):
-    i2c.write_byte_data(i2c_addr, resister_aqm0802, code)
-    time.sleep(0.1)
-
-
-def writeLCD(message):
-    mojilist = []
-    for moji in message:
-        mojilist.append(ord(moji))
-    i2c.write_i2c_block_data(i2c_addr, data, mojilist)
-    time.sleep(0.1)
-
-
 def setting_flag():
     global set_flag
     set_flag = 1
@@ -77,10 +66,10 @@ def test():
     print(now)
 
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
-    writeLCD(now.strftime(
+    writeLcd(now.strftime(
         f"{str(year % 100)}/{str(month).zfill(2)}/{str(day).zfill(2)}"))
     command(lcd_2ndline)
-    writeLCD(now.strftime(
+    writeLcd(now.strftime(
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
     while True:
@@ -88,13 +77,13 @@ def test():
         if p_button.is_pressed:
             year += 1
             command(lcd_1stline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
 
         elif m_button.is_pressed:
             year -= 1
             command(lcd_1stline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
 
         elif set_flag == 1:
@@ -110,13 +99,13 @@ def test():
         if p_button.is_pressed:
             month += 1
             command(lcd_1stline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
 
         elif m_button.is_pressed:
             month -= 1
             command(lcd_1stline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
 
         elif set_flag == 1:
@@ -132,19 +121,19 @@ def test():
         if p_button.is_pressed:
             day += 1
             command(lcd_1stline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
 
         elif m_button.is_pressed:
             day -= 1
             command(lcd_1stline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
 
         elif m_button.is_pressed:
             day -= 1
             command(lcd_1stline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
 
         elif set_flag == 1:
@@ -160,13 +149,13 @@ def test():
         if p_button.is_pressed:
             hour += 1
             command(lcd_2ndline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif m_button.is_pressed:
             hour -= 1
             command(lcd_2ndline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif set_flag == 1:
@@ -182,13 +171,13 @@ def test():
         if p_button.is_pressed:
             minute += 1
             command(lcd_2ndline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif m_button.is_pressed:
             minute -= 1
             command(lcd_2ndline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif set_flag == 1:
@@ -204,13 +193,13 @@ def test():
         if p_button.is_pressed:
             second += 1
             command(lcd_2ndline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif m_button.is_pressed:
             second -= 1
             command(lcd_2ndline)
-            writeLCD(now.strftime(
+            writeLcd(now.strftime(
                 f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif set_flag == 1:
