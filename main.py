@@ -25,11 +25,11 @@ LCD_2ndline = 0x40+0x80
 
 
 def main():
-    setmode
+    global setmode
     lcdInit()
 
     while True:
-        set_button.when_held = set_mode_change
+        set_button.when_held = set_mode_change()
         if setmode == 0:
             displayTime()
         else:
