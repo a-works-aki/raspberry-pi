@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
+from re import I
+from displayTime import displayTime
 import smbus
 import time
 import datetime
@@ -42,31 +44,36 @@ def setting_flag():
     set_flag = 1
 
 
+def displayDate():
+    command(lcd_1stline)
+    writeLcd(now.strftime(
+        f"{str(year % 100)}/{str(month).zfill(2)}/{str(day).zfill(2)}"))
+
+
+def diplayTime():
+    command(lcd_2ndline)
+    writeLcd(now.strftime(
+        f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
+
+
 def test():
     global now, year, month, day, hour, minute, second, set_flag
     print(now)
     setLcdInit()
 
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
-    writeLcd(now.strftime(
-        f"{str(year % 100)}/{str(month).zfill(2)}/{str(day).zfill(2)}"))
-    command(lcd_2ndline)
-    writeLcd(now.strftime(
-        f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
+    displayDate()
+    displayTime()
 
     while True:
         command(lcd_year)
         if p_button.is_pressed:
             year += 1
-            command(lcd_1stline)
-            writeLcd(now.strftime(
-                f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
+            displayDate()
 
         elif m_button.is_pressed:
             year -= 1
-            command(lcd_1stline)
-            writeLcd(now.strftime(
-                f"{str(year % 100)}/{str(month).zfill(2)}/{str(day)}"))
+            displayDate()
 
         elif set_flag == 1:
             set_flag = 0
