@@ -85,7 +85,7 @@ def test():
     displayDate()
     displayTime()
 
-    changeYear(year)
+    changeYear("year")
 
     while True:
         command(lcd_month)
