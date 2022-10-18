@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
-from xml.dom import pulldom
-import smbus
-import time
 import datetime
-from gpiozero import Button
-from signal import pause
 from displayTime import displayTime
 from lcdInit import lcdInit
 from command import command
 from test import test
 from test import set_button
-from setModeChange import set_mode_change
 
 # I2C通信の設定　
 data = 0x40
@@ -23,6 +17,11 @@ LCD_2ndline = 0x40+0x80
 
 # セットモードフラグ
 setmode = 0
+
+
+def set_mode_change():
+    global setmode
+    setmode = 1
 
 
 def main():
