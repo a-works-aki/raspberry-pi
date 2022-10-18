@@ -56,15 +56,15 @@ def diplayTime():
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
 
-def changeYear(x):
+def changeYear(x, y):
     while True:
         command("lcd_" + x)
         if p_button.is_pressed:
-            x += 1
+            y += 1
             displayDate()
 
         elif m_button.is_pressed:
-            x -= 1
+            y -= 1
             displayDate()
 
         elif set_flag == 1:
@@ -85,7 +85,7 @@ def test():
     displayDate()
     displayTime()
 
-    changeYear("year")
+    changeYear("year", year)
 
     while True:
         command(lcd_month)
