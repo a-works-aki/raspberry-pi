@@ -25,7 +25,7 @@ LCD_2ndline = 0x40+0x80
 
 
 def main():
-    global setmode
+    setmode
     lcdInit()
 
     while True:
