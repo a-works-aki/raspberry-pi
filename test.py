@@ -56,16 +56,16 @@ def diplayTime():
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
 
-def changeYear(x, y):
-    global year
+def changeYear(lcdCorsor, timeDate):
+    global now, month, day, hour, minute, second, set_flag
     while True:
-        command(x)
+        command(lcdCorsor)
         if p_button.is_pressed:
-            y += 1
+            timeDate += 1
             displayDate()
 
         elif m_button.is_pressed:
-            y -= 1
+            timeDate -= 1
             displayDate()
 
         elif set_flag == 1:
@@ -83,28 +83,12 @@ def test():
     setLcdInit()
 
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
+
     displayDate()
     displayTime()
 
     changeYear(lcd_year, year)
-
-    while True:
-        command(lcd_month)
-        if p_button.is_pressed:
-            month += 1
-            displayDate()
-
-        elif m_button.is_pressed:
-            month -= 1
-            displayDate()
-
-        elif set_flag == 1:
-            set_flag = 0
-            break
-
-        set_button.when_pressed = setting_flag
-
-        time.sleep(0.2)
+    changeYear(lcd_month, month)
 
     while True:
         command(lcd_day)
