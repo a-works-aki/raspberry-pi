@@ -57,8 +57,9 @@ def diplayTime():
 
 
 def changeYear(x, y):
+    global year
     while True:
-        command("lcd_" + x)
+        command(x)
         if p_button.is_pressed:
             y += 1
             displayDate()
@@ -77,7 +78,7 @@ def changeYear(x, y):
 
 
 def test():
-    global now, year, month, day, hour, minute, second, set_flag
+    global now, month, day, hour, minute, second, set_flag
     print(now)
     setLcdInit()
 
@@ -85,7 +86,7 @@ def test():
     displayDate()
     displayTime()
 
-    changeYear("year", year)
+    changeYear("lcd_year", year)
 
     while True:
         command(lcd_month)
