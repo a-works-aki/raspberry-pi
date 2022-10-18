@@ -56,7 +56,7 @@ def diplayTime():
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
 
-def changeYear(lcdCorsor, timeDate):
+def changeDateTime(lcdCorsor, timeDate):
     global now, month, day, hour, minute, second, set_flag
     while True:
         command(lcdCorsor)
@@ -87,80 +87,12 @@ def test():
     displayDate()
     displayTime()
 
-    changeYear(lcd_year, year)
-    changeYear(lcd_month, month)
-
-    while True:
-        command(lcd_day)
-        if p_button.is_pressed:
-            day += 1
-            displayDate()
-
-        elif m_button.is_pressed:
-            day -= 1
-            displayDate()
-
-        elif set_flag == 1:
-            set_flag = 0
-            break
-
-        set_button.when_pressed = setting_flag
-
-        time.sleep(0.2)
-
-    while True:
-        command(lcd_hour)
-        if p_button.is_pressed:
-            hour += 1
-            displayTime()
-
-        elif m_button.is_pressed:
-            hour -= 1
-            displayTime()
-
-        elif set_flag == 1:
-            set_flag = 0
-            break
-
-        set_button.when_pressed = setting_flag
-
-        time.sleep(0.2)
-
-    while True:
-        command(lcd_minute)
-        if p_button.is_pressed:
-            minute += 1
-            displayTime()
-
-        elif m_button.is_pressed:
-            minute -= 1
-            displayTime()
-
-        elif set_flag == 1:
-            set_flag = 0
-            break
-
-        set_button.when_pressed = setting_flag
-
-        time.sleep(0.2)
-
-    while True:
-        command(lcd_second)
-        if p_button.is_pressed:
-            second += 1
-            displayTime()
-
-        elif m_button.is_pressed:
-            second -= 1
-            displayTime()
-
-        elif set_flag == 1:
-            set_flag = 0
-            break
-
-        set_button.when_pressed = setting_flag
-
-        time.sleep(0.2)
+    changeDateTime(lcd_year, year)
+    changeDateTime(lcd_month, month)
+    changeDateTime(lcd_day, day)
+    changeDateTime(lcd_hour, hour)
+    changeDateTime(lcd_minute, minute)
+    changeDateTime(lcd_second, second)
 
     set_time = f"sudo hwclock --set --date='{month}/{day}/{year} {hour}:{minute}:{second}'"
     print(set_time)
