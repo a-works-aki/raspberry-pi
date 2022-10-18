@@ -11,6 +11,7 @@ from lcdInit import lcdInit
 from command import command
 from test import test
 from test import set_button
+from setModeChange import set_mode_change
 
 # I2C通信の設定　
 data = 0x40
@@ -29,7 +30,7 @@ def main():
     lcdInit()
 
     while True:
-        set_button.when_held = setmode = 1
+        set_button.when_held = set_mode_change
         if setmode == 0:
             displayTime()
         else:
