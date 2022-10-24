@@ -178,13 +178,17 @@ def changeMinute(lcdCorsor):
             minute += 1
             if minute > max:
                 minute = min
-            displayTime()
+            command(lcd_2ndline)
+            writeLcd(now.strftime(
+                f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif m_button.is_pressed:
             minute -= 1
             if minute < min:
                 minute = max
-            displayTime()
+            command(lcd_2ndline)
+            writeLcd(now.strftime(
+                f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif set_flag == 1:
             set_flag = 0
@@ -205,13 +209,17 @@ def changeSecond(lcdCorsor):
             second += 1
             if second > max:
                 second = min
-            displayTime()
+            command(lcd_2ndline)
+            writeLcd(now.strftime(
+                f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif m_button.is_pressed:
             second -= 1
             if second < min:
                 second = max
-            displayTime()
+            command(lcd_2ndline)
+            writeLcd(now.strftime(
+                f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif set_flag == 1:
             set_flag = 0
