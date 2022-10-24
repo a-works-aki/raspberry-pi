@@ -85,14 +85,24 @@ def changeDateTime(lcdCorsor, timeDate):
             if timeDate > max:
                 timeDate = min
             displayDate()
-            print(timeDate)
+            print(year)
+            print(month)
+            print(day)
+            print(hour)
+            print(minute)
+            print(second)
 
         elif m_button.is_pressed:
             timeDate -= 1
             if timeDate < min:
                 timeDate = max
             displayDate()
-            print(timeDate)
+            print(year)
+            print(month)
+            print(day)
+            print(hour)
+            print(minute)
+            print(second)
 
         elif set_flag == 1:
             set_flag = 0
