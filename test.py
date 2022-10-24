@@ -47,7 +47,7 @@ def setting_flag():
 def displayDate():
     command(lcd_1stline)
     writeLcd(now.strftime(
-        f"{str(year % 100)}/{str(month).zfill(2)}/{str(day).zfill(2)}"))
+        f"{str(year % 100).zfill(2)}/{str(month).zfill(2)}/{str(day).zfill(2)}"))
 
 
 def diplayTime():
