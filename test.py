@@ -58,14 +58,29 @@ def diplayTime():
 
 def changeDateTime(lcdCorsor, timeDate):
     global now, month, day, hour, minute, second, set_flag
+    max = 0
+    min = 0
+    if timeDate == year:
+        max = 2099
+        min = 2000
+    elif timeDate == month:
+        max = 12
+        min = 1
+    elif timeDate == day:
+        max = 31
+        min = 1
     while True:
         command(lcdCorsor)
         if p_button.is_pressed:
             timeDate += 1
+            if timeDate > max:
+                timeDate = min
             displayDate()
 
         elif m_button.is_pressed:
             timeDate -= 1
+            if timeDate < min:
+                timeDate = max
             displayDate()
 
         elif set_flag == 1:
