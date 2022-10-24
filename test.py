@@ -51,7 +51,6 @@ def displayDate():
 
 
 def diplayTime():
-    command(lcd_2ndline)
     writeLcd(now.strftime(
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
@@ -226,6 +225,7 @@ def test():
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
 
     displayDate()
+    command(lcd_2ndline)
     displayTime()
 
     changeYear(lcd_year)
