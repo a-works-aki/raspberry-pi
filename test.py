@@ -51,6 +51,7 @@ def displayDate():
 
 
 def diplayTime():
+    command(lcd_2ndline)
     writeLcd(now.strftime(
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
@@ -146,13 +147,15 @@ def changeHour(lcdCorsor):
             hour += 1
             if hour > max:
                 hour = min
-            displayTime()
+            writeLcd(now.strftime(
+                f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif m_button.is_pressed:
             hour -= 1
             if hour < min:
                 hour = max
-            displayTime()
+            writeLcd(now.strftime(
+                f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
         elif set_flag == 1:
             set_flag = 0
@@ -225,7 +228,6 @@ def test():
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
 
     displayDate()
-    command(lcd_2ndline)
     displayTime()
 
     changeYear(lcd_year)
