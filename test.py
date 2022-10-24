@@ -69,23 +69,30 @@ def changeDateTime(lcdCorsor, timeDate):
     elif timeDate == day:
         max = 31
         min = 1
+    elif timeDate == hour:
+        max = 24
+        min = 0
+    elif timeDate == minute:
+        max = 60
+        min = 0
+    elif timeDate == second:
+        max = 60
+        min = 0
     while True:
         command(lcdCorsor)
         if p_button.is_pressed:
             timeDate += 1
-            """
             if timeDate > max:
                 timeDate = min
-            """
             displayDate()
+            print(timeDate)
 
         elif m_button.is_pressed:
             timeDate -= 1
-            """
             if timeDate < min:
                 timeDate = max
-            """
             displayDate()
+            print(timeDate)
 
         elif set_flag == 1:
             set_flag = 0
