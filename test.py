@@ -147,13 +147,13 @@ def changeHour(lcdCorsor):
             hour += 1
             if hour > max:
                 hour = min
-            displayDate()
+            displayTime()
 
         elif m_button.is_pressed:
             hour -= 1
             if hour < min:
                 hour = max
-            displayDate()
+            displayTime()
 
         elif set_flag == 1:
             set_flag = 0
@@ -174,13 +174,13 @@ def changeMinute(lcdCorsor):
             minute += 1
             if minute > max:
                 minute = min
-            displayDate()
+            displayTime()
 
         elif m_button.is_pressed:
             minute -= 1
             if minute < min:
                 minute = max
-            displayDate()
+            displayTime()
 
         elif set_flag == 1:
             set_flag = 0
@@ -201,13 +201,13 @@ def changeSecond(lcdCorsor):
             second += 1
             if second > max:
                 second = min
-            displayDate()
+            displayTime()
 
         elif m_button.is_pressed:
             second -= 1
             if second < min:
                 second = max
-            displayDate()
+            displayTime()
 
         elif set_flag == 1:
             set_flag = 0
