@@ -56,53 +56,158 @@ def diplayTime():
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
 
-def changeDateTime(lcdCorsor, timeDate):
-    global now, month, day, hour, minute, second, set_flag
-    max = 0
-    min = 0
-    if timeDate == year:
-        max = 2099
-        min = 2000
-    elif timeDate == month:
-        max = 12
-        min = 1
-    elif timeDate == day:
-        max = 31
-        min = 1
-    elif timeDate == hour:
-        max = 24
-        min = 0
-    elif timeDate == minute:
-        max = 60
-        min = 0
-    elif timeDate == second:
-        max = 60
-        min = 0
+def changeYear(lcdCorsor):
+    global year, set_flag
+    max = 2099
+    min = 2000
     while True:
         command(lcdCorsor)
         if p_button.is_pressed:
-            timeDate += 1
-            if timeDate > max:
-                timeDate = min
+            year += 1
+            if year > max:
+                year = min
             displayDate()
-            print(year)
-            print(month)
-            print(day)
-            print(hour)
-            print(minute)
-            print(second)
 
         elif m_button.is_pressed:
-            timeDate -= 1
-            if timeDate < min:
-                timeDate = max
+            year -= 1
+            if year < min:
+                year = max
             displayDate()
-            print(year)
-            print(month)
-            print(day)
-            print(hour)
-            print(minute)
-            print(second)
+
+        elif set_flag == 1:
+            set_flag = 0
+            break
+
+        set_button.when_pressed = setting_flag
+
+        time.sleep(0.2)
+
+
+def changeMonth(lcdCorsor):
+    global month, set_flag
+    max = 12
+    min = 1
+    while True:
+        command(lcdCorsor)
+        if p_button.is_pressed:
+            month += 1
+            if month > max:
+                month = min
+            displayDate()
+
+        elif m_button.is_pressed:
+            month -= 1
+            if month < min:
+                month = max
+            displayDate()
+
+        elif set_flag == 1:
+            set_flag = 0
+            break
+
+        set_button.when_pressed = setting_flag
+
+        time.sleep(0.2)
+
+
+def changeDay(lcdCorsor):
+    global day, set_flag
+    max = 31
+    min = 1
+    while True:
+        command(lcdCorsor)
+        if p_button.is_pressed:
+            day += 1
+            if day > max:
+                day = min
+            displayDate()
+
+        elif m_button.is_pressed:
+            day -= 1
+            if day < min:
+                day = max
+            displayDate()
+
+        elif set_flag == 1:
+            set_flag = 0
+            break
+
+        set_button.when_pressed = setting_flag
+
+        time.sleep(0.2)
+
+
+def changeHour(lcdCorsor):
+    global hour, set_flag
+    max = 24
+    min = 0
+    while True:
+        command(lcdCorsor)
+        if p_button.is_pressed:
+            hour += 1
+            if hour > max:
+                hour = min
+            displayDate()
+
+        elif m_button.is_pressed:
+            hour -= 1
+            if hour < min:
+                hour = max
+            displayDate()
+
+        elif set_flag == 1:
+            set_flag = 0
+            break
+
+        set_button.when_pressed = setting_flag
+
+        time.sleep(0.2)
+
+
+def changeMinute(lcdCorsor):
+    global minute, set_flag
+    max = 60
+    min = 0
+    while True:
+        command(lcdCorsor)
+        if p_button.is_pressed:
+            minute += 1
+            if minute > max:
+                minute = min
+            displayDate()
+
+        elif m_button.is_pressed:
+            minute -= 1
+            if minute < min:
+                minute = max
+            displayDate()
+
+        elif set_flag == 1:
+            set_flag = 0
+            break
+
+        set_button.when_pressed = setting_flag
+
+        time.sleep(0.2)
+
+
+def changeSecond(lcdCorsor):
+    global second, set_flag
+    max = 60
+    min = 0
+    while True:
+        command(lcdCorsor)
+        if p_button.is_pressed:
+            second += 1
+            if second > max:
+                second = min
+            displayDate()
+
+        elif m_button.is_pressed:
+            second -= 1
+            if second < min:
+                second = max
+            displayDate()
 
         elif set_flag == 1:
             set_flag = 0
@@ -123,12 +228,12 @@ def test():
     displayDate()
     displayTime()
 
-    changeDateTime(lcd_year, year)
-    changeDateTime(lcd_month, month)
-    changeDateTime(lcd_day, day)
-    changeDateTime(lcd_hour, hour)
-    changeDateTime(lcd_minute, minute)
-    changeDateTime(lcd_second, second)
+    changeYear(lcd_year)
+    changeMonth(lcd_month)
+    changeDay(lcd_day)
+    changeHour(lcd_hour)
+    changeMinute(lcd_minute)
+    changeSecond(lcd_second)
 
     set_time = f"sudo hwclock --set --date='{month}/{day}/{year} {hour}:{minute}:{second}'"
     print(set_time)
