@@ -139,7 +139,7 @@ def changeDay(lcdCorsor):
 
 def changeHour(lcdCorsor):
     global hour, set_flag
-    max = 24
+    max = 23
     min = 0
     while True:
         command(lcdCorsor)
@@ -147,9 +147,12 @@ def changeHour(lcdCorsor):
             hour += 1
             if hour > max:
                 hour = min
+            displayTime()
+            """
             command(lcd_2ndline)
             writeLcd(now.strftime(
                 f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
+            """
 
         elif m_button.is_pressed:
             hour -= 1
@@ -170,7 +173,7 @@ def changeHour(lcdCorsor):
 
 def changeMinute(lcdCorsor):
     global minute, set_flag
-    max = 60
+    max = 59
     min = 0
     while True:
         command(lcdCorsor)
@@ -201,7 +204,7 @@ def changeMinute(lcdCorsor):
 
 def changeSecond(lcdCorsor):
     global second, set_flag
-    max = 60
+    max = 59
     min = 0
     while True:
         command(lcdCorsor)
