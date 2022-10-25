@@ -251,7 +251,11 @@ def test():
     try:
         print(set_time)
         subprocess.call(shlex.split(set_time))
-    except ValueError:
-        print("Error")
+    except Exception as e:
+        print('=== エラー内容 ===')
+        print('type:' + str(type(e)))
+        print('args:' + str(e.args))
+        print('message:' + e.message)
+        print('e自身:' + str(e))
     subprocess.call(shlex.split("sudo hwclock -s"))
     print("final")
