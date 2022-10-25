@@ -255,8 +255,8 @@ def test():
         print('type:' + str(type(ValueError)))
         """
         print('args:' + str(ValueError.args))
-        """
         print('message:' + ValueError.message)
+        """
         print('e自身:' + str(ValueError))
     subprocess.call(shlex.split("sudo hwclock -s"))
     print("final")
