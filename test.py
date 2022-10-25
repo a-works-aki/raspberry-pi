@@ -251,7 +251,7 @@ def test():
     try:
         print(set_time)
         subprocess.call(shlex.split(set_time))
-    except Exception as e:
+    except ValueError as e:
         print('=== エラー内容 ===')
         print('type:' + str(type(e)))
         print('args:' + str(e.args))
