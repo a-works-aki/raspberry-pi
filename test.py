@@ -251,12 +251,8 @@ def test():
     print(set_time)
     subprocess.call(shlex.split(set_time))
     if ValueError:
-        print('=== エラー内容 ===')
-        print('type:' + str(type(ValueError)))
-        """
-        print('args:' + str(ValueError.args))
-        print('message:' + ValueError.message)
-        """
-        print('e自身:' + str(ValueError))
+        setLcdInit()
+        command(lcd_1stline)
+        writeLcd("ﾋﾂﾞｹｴﾗｰ")
     subprocess.call(shlex.split("sudo hwclock -s"))
     print("final")
