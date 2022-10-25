@@ -248,14 +248,13 @@ def test():
     changeSecond(lcd_second)
 
     set_time = f"sudo hwclock --set --date='{month}/{day}/{year} {hour}:{minute}:{second}'"
-    try:
-        print(set_time)
-        subprocess.call(shlex.split(set_time))
-    except ValueError as e:
+    print(set_time)
+    subprocess.call(shlex.split(set_time))
+    if ValueError:
         print('=== エラー内容 ===')
-        print('type:' + str(type(e)))
-        print('args:' + str(e.args))
-        print('message:' + e.message)
-        print('e自身:' + str(e))
+        print('type:' + str(type(ValueError)))
+        print('args:' + str(ValueError.args))
+        print('message:' + ValueError.message)
+        print('e自身:' + str(ValueError))
     subprocess.call(shlex.split("sudo hwclock -s"))
     print("final")
