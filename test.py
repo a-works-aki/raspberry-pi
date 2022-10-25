@@ -253,6 +253,9 @@ def test():
     if ValueError:
         setLcdInit()
         command(lcd_1stline)
-        writeLcd("ﾋﾂﾞｹｴﾗｰ")
+        writeLcd("date")
+        command(lcd_2ndline)
+        writeLcd("  error")
+        time.sleep(1)
     subprocess.call(shlex.split("sudo hwclock -s"))
     print("final")
