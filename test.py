@@ -249,13 +249,15 @@ def test():
 
     set_time = f"sudo hwclock --set --date='{month}/{day}/{year} {hour}:{minute}:{second}'"
     print(set_time)
-    subprocess.call(shlex.split(set_time))
-    if ValueError:
+    try:
+        subprocess.call(shlex.split(set_time))
+    except ValueError:
         setLcdInit()
         command(lcd_1stline)
         writeLcd("date")
         command(lcd_2ndline)
         writeLcd("  error")
         time.sleep(1)
+
     subprocess.call(shlex.split("sudo hwclock -s"))
     print("final")
