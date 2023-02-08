@@ -11,6 +11,7 @@ from gpiozero import Button
 from command import command
 from writeLcd import writeLcd
 from setLcdInit import setLcdInit
+from time import sleep
 
 # lcdカーソルアドレス
 lcd_year = 0x81
@@ -239,6 +240,7 @@ def test():
 
     displayDate()
     displayTime()
+    sleep(2)
 
     changeYear(lcd_year)
     changeMonth(lcd_month)
