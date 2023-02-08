@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
 from re import I
-from displayTime import displayTime
+#from displayTime import displayTime
 import smbus
 import time
 import datetime
