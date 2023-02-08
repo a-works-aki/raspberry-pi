@@ -51,7 +51,7 @@ def displayDate():
         f"{str(year % 100).zfill(2)}/{str(month).zfill(2)}/{str(day).zfill(2)}"))
 
 
-def diplayTime():
+def displayTime():
     command(lcd_2ndline)
     writeLcd(now.strftime(
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
