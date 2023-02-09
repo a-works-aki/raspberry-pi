@@ -21,7 +21,7 @@ LCD_2ndline = 0x40+0x80
 setmode = 0
 
 # shutdown変数
-set_button = Button(5, hold_time=2)
+shutdown_button = Button(5, hold_time=2)
 shutdown_flag = 0
 
 
@@ -42,7 +42,7 @@ def main():
 
     while True:
         set_button.when_held = set_mode_change
-        set_button.when_held = shutdown
+        shutdown_button.when_held = shutdown
         if setmode == 0:
             displayTime()
             if shutdown_flag == 1:
