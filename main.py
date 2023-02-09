@@ -31,9 +31,6 @@ def set_mode_change():
 def main():
     global setmode
     lcdLed.on()
-    sleep(1)
-    lcdLed.off()
-    sleep(1)
 
     lcdInit()
 
