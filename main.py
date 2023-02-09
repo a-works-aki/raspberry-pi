@@ -6,6 +6,8 @@ from lcdInit import lcdInit
 from command import command
 from test import test
 from test import set_button
+from gpiozero import LED
+from time import sleep
 
 # I2C通信の設定　
 data = 0x40
@@ -18,6 +20,8 @@ LCD_2ndline = 0x40+0x80
 # セットモードフラグ
 setmode = 0
 
+lcdLed = LED(4)
+
 
 def set_mode_change():
     global setmode
@@ -26,6 +30,11 @@ def set_mode_change():
 
 def main():
     global setmode
+    lcdLed.on()
+    sleep(1)
+    lcdLed.off()
+    sleep(1)
+
     lcdInit()
 
     while True:
