@@ -24,14 +24,8 @@ def set_mode_change():
     setmode = 1
 
 
-def shutdown():
-    global shutdown_flag
-    shutdown_flag = 1
-
-
 def main():
     global setmode
-
     lcdInit()
 
     while True:
