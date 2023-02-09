@@ -244,6 +244,7 @@ def test():
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
 
     displaySetMode()
+    sleep(2)
     displayDate()
     displayTime()
     sleep(2)
