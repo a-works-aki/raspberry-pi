@@ -7,7 +7,7 @@ import time
 import datetime
 import subprocess
 import shlex
-from gpiozero import Button
+from gpiozero import Button, LED
 from command import command
 from writeLcd import writeLcd
 from setLcdInit import setLcdInit
@@ -38,6 +38,7 @@ hour = now.hour
 minute = now.minute
 second = now.second
 set_flag = 0
+lcdLed = LED(4)
 
 
 def setting_flag():
@@ -244,6 +245,7 @@ def changeSecond(lcdCorsor):
 def test():
     global now, month, day, hour, minute, second, set_flag
     print(now)
+    lcdLed.on()
     setLcdInit()
 
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
@@ -266,6 +268,8 @@ def test():
     print(set_time)
     displayOk()
     sleep(1)
+    lcdLed.off()
+
     try:
         subprocess.call(shlex.split(set_time))
     except ValueError:
