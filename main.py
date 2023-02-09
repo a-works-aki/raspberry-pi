@@ -42,6 +42,7 @@ def main():
     displayStart()
     sleep(1)
     lcdLed.off()
+    lcdInit()
 
     while True:
         set_button.when_held = set_mode_change
