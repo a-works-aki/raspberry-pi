@@ -57,6 +57,11 @@ def displayTime():
         f"{str(hour).zfill(2)}:{str(minute).zfill(2)}:{str(second).zfill(2)}"))
 
 
+def displaySetMode():
+    command(lcd_1stline)
+    writeLcd("set mode")
+
+
 def changeYear(lcdCorsor):
     global year, set_flag
     max = 2099
@@ -238,6 +243,7 @@ def test():
 
     print(f"{year}/{month}/{day}/{hour}:{minute}:{second}")
 
+    displaySetMode()
     displayDate()
     displayTime()
     sleep(2)
