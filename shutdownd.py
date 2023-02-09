@@ -4,28 +4,16 @@ import time
 import RPi.GPIO as GPIO
 import os
 
-pinnumber = 29
 GPIO.setmode(GPIO.BCM)
 
-# GPIO23pinを入力モードとし、pull up設定とします
-GPIO.setup(pinnumber, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(29, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
-    GPIO.wait_for_edge(pinnumber, GPIO.FALLING)
-    sw_counter = 0
+    GPIO.wait_for_edge(27, GPIO.FALLING)
 
     while True:
-        sw_status = GPIO.input(pinnumber)
+        sw_status = GPIO.input(27)
         if sw_status == 0:
-            sw_counter = sw_counter + 1
-            if sw_counter >= 50:
-                print("長押し検知！")
-                os.system("sudo shutdown -h now")
-                break
-        else:
-            print("短押し検知")
+            os.system("sudo shutdown -h now")
+            print("shutdown start")
             break
-
-        time.sleep(0.01)
-
-    print(sw_counter)
