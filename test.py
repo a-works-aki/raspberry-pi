@@ -62,6 +62,11 @@ def displaySetMode():
     writeLcd("SET MODE")
 
 
+def displayOk():
+    command(lcd_1stline)
+    writeLcd("SET OK")
+
+
 def changeYear(lcdCorsor):
     global year, set_flag
     max = 2099
@@ -258,6 +263,8 @@ def test():
 
     set_time = f"sudo hwclock --set --date='{month}/{day}/{year} {hour}:{minute}:{second}'"
     print(set_time)
+    displayOk()
+    sleep(1)
     try:
         subprocess.call(shlex.split(set_time))
     except ValueError:
