@@ -8,6 +8,7 @@ shutdown_flag = 0
 
 
 def shutdown():
+    global shutdown_flag
     shutdown_flag = 1
 
 
