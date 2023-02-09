@@ -59,7 +59,7 @@ def displayTime():
 
 def displaySetMode():
     command(lcd_1stline)
-    writeLcd("set mode")
+    writeLcd("SET MODE")
 
 
 def changeYear(lcdCorsor):
@@ -247,7 +247,7 @@ def test():
     sleep(2)
     displayDate()
     displayTime()
-    sleep(2)
+    sleep(1)
 
     changeYear(lcd_year)
     changeMonth(lcd_month)
