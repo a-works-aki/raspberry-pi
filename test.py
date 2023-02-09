@@ -262,6 +262,7 @@ def test():
     changeSecond(lcd_second)
 
     set_time = f"sudo hwclock --set --date='{month}/{day}/{year} {hour}:{minute}:{second}'"
+    setLcdInit()
     print(set_time)
     displayOk()
     sleep(1)
