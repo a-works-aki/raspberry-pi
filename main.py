@@ -6,8 +6,6 @@ from lcdInit import lcdInit
 from command import command
 from test import test
 from test import set_button
-from gpiozero import Button
-import os
 
 # I2C通信の設定　
 data = 0x40
@@ -19,10 +17,6 @@ LCD_2ndline = 0x40+0x80
 
 # セットモードフラグ
 setmode = 0
-
-# shutdown変数
-shutdown_button = Button(5, hold_time=2)
-shutdown_flag = 0
 
 
 def set_mode_change():
@@ -42,12 +36,8 @@ def main():
 
     while True:
         set_button.when_held = set_mode_change
-        shutdown_button.when_held = shutdown
         if setmode == 0:
             displayTime()
-            if shutdown_flag == 1:
-                print("shutdown start")
-                os.system("sudo shutdown -h now")
         else:
             test()
             setmode = 0
