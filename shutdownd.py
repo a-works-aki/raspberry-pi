@@ -57,41 +57,16 @@
 #button.when_pressed = shutdown
 
 # pause()
+from gpiozero import Button
+from time import sleep
+from subprocess import call
 
-import smbus
-import time
+button = Button(5)
 
-# I2C bus number
-bus = smbus.SMBus(1)
-
-# AQM0802 address
-address = 0x3e
-
-# AQM0802 commands
-command_list = [0x38, 0x39, 0x14, 0x70, 0x56, 0x6c]
-
-# AQM0802 initialize
-
-
-def init_aqm0802():
-    for command in command_list:
-        bus.write_byte(address, command)
-    bus.write_byte(address, 0x38)
-    bus.write_byte(address, 0x0c)
-    bus.write_byte(address, 0x01)
-
-# Write message to AQM0802
-
-
-def write_aqm0802(message):
-    message = message.ljust(16, " ")
-    for i in range(16):
-        bus.write_byte(address, 0x80 + i)
-        bus.write_byte(address, ord(message[i]))
-
-
-# AQM0802に"See you!"と表示
-write_aqm0802("See you!")
-
-# AQM0802の初期化
-init_aqm0802()
+while True:
+    button.wait_for_press()
+    print("See you!")
+    sleep(2)
+    if button.is_pressed:
+        call("sudo shutdown -h now", shell=True)
+        break
