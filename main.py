@@ -61,13 +61,8 @@ def main():
 
     while True:
         set_button.when_held = set_mode_change
-        shutdown_button.when_held = shutdown
         if setmode == 0:
             displayTime()
-            if shutdown_flag == 1:
-                print("See you!")
-                call("sudo shutdown -h now", shell=True)
-                break
         else:
             test()
             setmode = 0
