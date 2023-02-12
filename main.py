@@ -14,10 +14,11 @@ from command import command
 from test import test
 from test import set_button
 from test import lcdLed
-from gpiozero import LED
+from gpiozero import LED, Button
 from command import command
 from writeLcd import writeLcd
 from time import sleep
+from subprocess import call
 
 # I2C通信の設定　
 data = 0x40
@@ -27,6 +28,7 @@ display_On_Cursor_Off = 0x0C
 display_On_Cursor_On = 0x0f
 lcd_1stline = 0x80
 LCD_2ndline = 0x40+0x80
+shutdown_button = Button(5)
 
 # セットモードフラグ
 setmode = 0
@@ -53,7 +55,13 @@ def main():
 
     while True:
         set_button.when_held = set_mode_change
-        if setmode == 0:
+        shutdown_button.wait_for_press()
+        print("See you!")
+        sleep(2)
+        if shutdown_button.is_pressed:
+            call("sudo shutdown -h now", shell=True)
+            break
+        elif setmode == 0:
             displayTime()
         else:
             test()

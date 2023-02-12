@@ -61,12 +61,12 @@ from gpiozero import Button
 from time import sleep
 from subprocess import call
 
-button = Button(5)
+shutdown_button = Button(5)
 
 while True:
-    button.wait_for_press()
+    shutdown_button.wait_for_press()
     print("See you!")
     sleep(2)
-    if button.is_pressed:
+    if shutdown_button.is_pressed:
         call("sudo shutdown -h now", shell=True)
         break
