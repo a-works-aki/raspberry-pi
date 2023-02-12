@@ -32,6 +32,7 @@ shutdown_button = Button(5, hold_time=2)
 
 # セットモードフラグ
 setmode = 0
+shutdown_flag = 0
 
 
 def set_mode_change():
