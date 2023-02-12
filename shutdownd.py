@@ -29,6 +29,7 @@ while True:
         displayEnd()
         sleep(1)
         print("shutdown start")
-        os.system("sudo shutdown -h now")
+        #os.system("sudo shutdown -h now")
     else:
         print("Button is not pressed")
+        sleep(1)
