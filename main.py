@@ -28,7 +28,7 @@ display_On_Cursor_Off = 0x0C
 display_On_Cursor_On = 0x0f
 lcd_1stline = 0x80
 LCD_2ndline = 0x40+0x80
-shutdown_button = Button(5)
+shutdown_button = Button(5, hold_time=2)
 
 # セットモードフラグ
 setmode = 0
@@ -44,6 +44,11 @@ def displayStart():
     writeLcd("START")
 
 
+def shutdown():
+    global shutdown_flag
+    shutdown_flag = 1
+
+
 def main():
     global setmode
     lcdLed.on()
@@ -55,10 +60,10 @@ def main():
 
     while True:
         set_button.when_held = set_mode_change
-        shutdown_button.wait_for_press()
+        shutdown_button.when_held = shutdown
         if setmode == 0:
             displayTime()
-            if shutdown_button.is_pressed:
+            if shutdown_flag == 1:
                 print("See you!")
                 call("sudo shutdown -h now", shell=True)
                 break
