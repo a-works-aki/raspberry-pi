@@ -2,9 +2,12 @@
 #!/usr/bin/python
 from gpiozero import Button
 import os
+from command import command
+from writeLcd import writeLcd
 
-set_button = Button(5, hold_time=2)
+shutdown_button = Button(5, hold_time=2)
 shutdown_flag = 0
+lcd_1stline = 0x80
 
 
 def shutdown():
@@ -12,9 +15,15 @@ def shutdown():
     shutdown_flag = 1
 
 
+def displayEnd():
+    command(lcd_1stline)
+    writeLcd("See You!")
+
+
 while True:
-    set_button.when_held = shutdown
+    shutdown_button.when_held = shutdown
     if shutdown_flag == 1:
+        displayEnd()
         print("shutdown start")
         os.system("sudo shutdown -h now")
     else:

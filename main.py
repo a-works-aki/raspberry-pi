@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
+
+# ------------------------------------------------
+#  概　要：文字列の送信
+#  引  数：str     送信したい文字列
+#  戻り値：0   正常
+#          -1  異常
+# ------------------------------------------------
 import datetime
 from displayTime import displayTime
 from lcdInit import lcdInit
