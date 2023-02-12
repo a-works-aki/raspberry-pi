@@ -58,11 +58,11 @@ def main():
         shutdown_button.wait_for_press()
         print("See you!")
         sleep(2)
-        if shutdown_button.is_pressed:
-            call("sudo shutdown -h now", shell=True)
-            break
-        elif setmode == 0:
+        if setmode == 0:
             displayTime()
+            if shutdown_button.is_pressed:
+                call("sudo shutdown -h now", shell=True)
+                break
         else:
             test()
             setmode = 0
