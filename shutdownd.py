@@ -27,11 +27,11 @@ def displayEnd():
 
 def shutdown_work():
     while True:
-        lcdInit()
-        displayEnd()
-        sleep(1)
         shutdown_button.when_held = shutdown
         if shutdown_flag == 1:
+            lcdInit()
+            displayEnd()
+            sleep(1)
             print("shutdown start")
             #os.system("sudo shutdown -h now")
         else:
