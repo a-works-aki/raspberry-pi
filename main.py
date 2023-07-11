@@ -11,9 +11,9 @@ import datetime
 from displayTime import displayTime
 from lcdInit import lcdInit
 from command import command
-from test import test
-from test import set_button
-from test import lcdLed
+from setDateTime import setDateTime
+from setDateTime import set_button
+from setDateTime import lcdLed
 from gpiozero import LED, Button
 from command import command
 from writeLcd import writeLcd
@@ -64,7 +64,7 @@ def main():
         if setmode == 0:
             displayTime()
         else:
-            test()
+            setDateTime()
             setmode = 0
             lcdInit()
 
